@@ -2,6 +2,7 @@
 '''personal data protection module
 '''
 import re
+from typing import List
 
 patterns = {
     'extract': lambda x, y: r'(?P<field>{})=[^{}]*'.format('|'.join(x), y),
@@ -9,7 +10,9 @@ patterns = {
 }
 
 
-def filter_datum(fields, redaction, message, separator):
+def filter_datum(
+    fields: List[str], redaction: str, message: str, separator: str,
+) -> str:
     '''obfuscate log messages
     '''
     extract, replace = (patterns["extract"], patterns["replace"])
