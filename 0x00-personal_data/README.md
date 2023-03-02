@@ -4,17 +4,17 @@
 
 
 ## Tasks
-### [0. Regex-ing]()
+### [0. Regex-ing](./filtered_logger.py)
 
 Write a function called `filter_datum` that returns the log message obfuscated:
 
 - Arguments:
-    - [ ] `fields`: a list of strings representing all fields to obfuscate
-    - [ ] `redaction`: a string representing by what the field will be obfuscated
-    - [ ] `message`: a string representing the log line
-    - [ ] `separator`: a string representing by which character is separating all fields in the log line (message)
-- [ ] The function should use a regex to replace occurrences of certain field values.
-- [ ] `filter_datum` should be less than 5 lines long and use `re.sub` to perform the substitution with a single regex.
+    - [x] `fields`: a list of strings representing all fields to obfuscate
+    - [x] `redaction`: a string representing by what the field will be obfuscated
+    - [x] `message`: a string representing the log line
+    - [x] `separator`: a string representing by which character is separating all fields in the log line (message)
+- [x] The function should use a regex to replace occurrences of certain field values.
+- [x] `filter_datum` should be less than 5 lines long and use `re.sub` to perform the substitution with a single regex.
 ```bash
 bob@dylan:~$ cat main.py
 #!/usr/bin/env python3
@@ -38,7 +38,7 @@ bob@dylan:~$
 ```
 
 
-### [1. Log formatter]()
+### [1. Log formatter](./filtered_logger.py)
 
 Copy the following code into `filtered_logger.py`.
 ```py
