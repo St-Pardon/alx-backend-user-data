@@ -190,11 +190,11 @@ bob@dylan:~$
 
 Update the method def require_auth(self, path: str, excluded_paths: List[str]) -> bool: in Auth that returns True if the path is not in the list of strings excluded_paths:
 
-- [ ] Returns `True` if `path` is `None`
-- [ ] Returns `True` if `excluded_paths` is `None` or empty
-- [ ] Returns `False` if `path` is in `excluded_paths`
-- [ ] You can assume `excluded_paths` contains `string` path always ending by a `/`
-- [ ] This method must be slash tolerant: `path=/api/v1/status` and `path=/api/v1/status/` must be returned `False` if `excluded_paths` contains `/api/v1/status/`
+- [x] Returns `True` if `path` is `None`
+- [x] Returns `True` if `excluded_paths` is `None` or empty
+- [x] Returns `False` if `path` is in `excluded_paths`
+- [x] You can assume `excluded_paths` contains `string` path always ending by a `/`
+- [x] This method must be slash tolerant: `path=/api/v1/status` and `path=/api/v1/status/` must be returned `False` if `excluded_paths` contains `/api/v1/status/`
 ```bash
 bob@dylan:~$ cat main_1.py
 #!/usr/bin/env python3
@@ -228,25 +228,28 @@ bob@dylan:~$
 
 Now you will validate all requests to secure the API:
 
-Update the method def authorization_header(self, request=None) -> str: in api/v1/auth/auth.py:
+Update the method `def authorization_header(self, request=None) -> str: in api/v1/auth/auth.py:`
 
-If request is None, returns None
-If request doesn’t contain the header key Authorization, returns None
-Otherwise, return the value of the header request Authorization
-Update the file api/v1/app.py:
+- [ ] If `request` is `None`, returns `None`
+- [ ] If `request` doesn’t contain the header key `Authorization`, returns `None`
+- [ ] Otherwise, return the value of the header request `Authorization`
 
-Create a variable auth initialized to None after the CORS definition
-Based on the environment variable AUTH_TYPE, load and assign the right instance of authentication to auth
-if auth:
-import Auth from api.v1.auth.auth
-create an instance of Auth and assign it to the variable auth
+Update the file [api/v1/app.py](./api/v1/app.py):
+
+- [ ] Create a variable `auth` initialized to `None` after the `CORS` definition
+- [ ] Based on the environment variable `AUTH_TYPE`, load and assign the right instance of authentication to `auth`
+    - [ ] if `auth`:
+        - [ ] import `Auth` from `api.v1.auth.auth`
+        - [ ] create an instance of `Auth` and assign it to the variable `auth`
+
 Now the biggest piece is the filtering of each request. For that you will use the Flask method before_request
 
-Add a method in api/v1/app.py to handler before_request
-if auth is None, do nothing
-if request.path is not part of this list ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/'], do nothing - you must use the method require_auth from the auth instance
-if auth.authorization_header(request) returns None, raise the error 401 - you must use abort
-if auth.current_user(request) returns None, raise the error 403 - you must use abort
+- [ ] Add a method in [api/v1/app.py](./api/v1/app.py) to handler `before_request`
+    - [ ] if `auth` is `None`, do nothing
+    - [ ] if `request.path` is not part of this list `['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']`, do nothing - you must use the method `require_auth` from the `auth` instance
+    - [ ] if `auth.authorization_header(request)` returns `None`, raise the `error 401` - you must use `abort`
+    - [ ] if `auth.current_user(request)` returns `None`, raise the `error 403` - you must use `abort`
+    
 In the first terminal:
 ```bash
 bob@dylan:~$ API_HOST=0.0.0.0 API_PORT=5000 AUTH_TYPE=auth python3 -m api.v1.app
