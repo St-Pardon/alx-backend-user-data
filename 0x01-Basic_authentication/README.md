@@ -431,11 +431,11 @@ user@ubuntu:~$
 
 Add the method def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'): in the class BasicAuth that returns the User instance based on his email and password.
 
-- [ ] Return `None` if `user_email` is `None`or not a `string`
-- [ ] Return `None` if `user_pwd` is `None` or not a `string`
-- [ ] Return `None` if your database (file) doesn’t contain any `User` instance with `email`equal to `user_email` - you should use the class method search of the `User` to lookup the list of users based on their `email`. Don’t forget to test all cases: “what if there is no user in DB?”, etc.
-- [ ] Return `None` if `user_pwd `is not the `password` of the User instance found - you must use the method `is_valid_password` of User
-- [ ] Otherwise, return the User instance
+- [x] Return `None` if `user_email` is `None`or not a `string`
+- [x] Return `None` if `user_pwd` is `None` or not a `string`
+- [x] Return `None` if your database (file) doesn’t contain any `User` instance with `email`equal to `user_email` - you should use the class method search of the `User` to lookup the list of users based on their `email`. Don’t forget to test all cases: “what if there is no user in DB?”, etc.
+- [x] Return `None` if `user_pwd `is not the `password` of the User instance found - you must use the method `is_valid_password` of User
+- [x] Otherwise, return the User instance
 ```bash
 user@ubuntu:~$ cat main_5.py
 #!/usr/bin/env python3
@@ -492,11 +492,11 @@ Now, you have all pieces for having a complete Basic authentication.
 
 Add the method `def current_user(self, request=None) -> TypeVar('User')` in the class `BasicAuth` that overloads `Auth` and retrieves the `User` instance for a request:
 
-- [ ] You must use `authorization_header`
-- [ ] You must use `extract_base64_authorization_header`
-- [ ] You must use `decode_base64_authorization_header`
-- [ ] You must use `extract_user_credentials`
-- [ ] You must use `user_object_from_credentials`
+- [x] You must use `authorization_header`
+- [x] You must use `extract_base64_authorization_header`
+- [x] You must use `decode_base64_authorization_header`
+- [x] You must use `extract_user_credentials`
+- [x] You must use `user_object_from_credentials`
 
 With this update, now your API is fully protected by a Basic Authentication. Enjoy!
 
