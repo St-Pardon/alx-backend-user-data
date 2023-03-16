@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 '''user authentication module
 '''
+from typing import Union
 from uuid import uuid4
 from user import User
 import bcrypt
